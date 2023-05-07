@@ -96,7 +96,9 @@ func (t text) WrapFitWord(r Renderer, value string, width int, style Style) []st
 		textBox = r.MeasureText(line + word + string(c))
 
 		if textBox.Width() >= width {
-			output = append(output, t.Trim(line))
+			if len(line) != 0 {
+				output = append(output, t.Trim(line))
+			}
 			line = word
 			word = string(c)
 			continue
